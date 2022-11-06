@@ -4,10 +4,10 @@ import MitsubishiLogo from "../../../images/mitsubishi-changes-for-the-better.sv
 import EliabelLogo from "../../../images/ebarreto-logo.png"
 import { Button, Form, Input, Radio, notification } from "antd"
 
-const plainText = ["Creme Brulê", "Cappuccino", "Café"]
+const plainText = ["Creme Brulée", "Cappuccino", "Café"]
 const options = [
     {
-        label: "Creme Brulê",
+        label: "Creme Brulée",
         value: 0,
     },
     {
@@ -26,10 +26,12 @@ function AppFazerPedido() {
   const onFinish = (values) => {
     //TODO inserir a logica de inserir no banco de dados.
 
-    notification['success']({
-        message: 'Pedido Feito',
-        description: `Olá ${values.name}. Seu pedido de um ${plainText[values.option]} já foi realizado. Verifique no painel quanto estará pronto.`,
-        duration: 5
+    notification["success"]({
+        message: "Pedido Feito",
+        description: `Olá ${values.name.replace(/\s/g, "")}. Seu pedido de um ${
+            plainText[values.option]
+        } já foi realizado. Verifique no painel quanto estará pronto.`,
+        duration: 5,
     })
   }
   const onFinishFailed = (errorInfo) => {
