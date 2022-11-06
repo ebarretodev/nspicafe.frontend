@@ -1,7 +1,9 @@
 import React, { useState } from "react"
-import { Anchor, Button, Drawer } from "antd"
-import { CgMenu } from "react-icons/cg"
+import { Button, Drawer, Typography } from "antd"
+import { CgEnter, CgMenu, CgSmileNone } from "react-icons/cg"
 import { useNavigate, Link } from "react-router-dom"
+
+const { Title } = Typography
 
 function AppHeader() {
     const [visible, setVisible] = useState(false)
@@ -28,24 +30,26 @@ function AppHeader() {
                         <Link style={{ marginLeft: "15px" }} to="/dashboard">
                             Dashboard
                         </Link>
-                        <Button
+                        {/* <Button
                             type="primary"
                             shape="round"
                             className="bt-login"
                             onClick={handleLogin}
                         >
                             Login
-                        </Button>
+                        </Button> */}
                     </div>
                 </div>
                 <div className="mobileVisible">
+                    <Title level={1} style={{color: 'white', fontSize: 28 }}>
+                        Mauá NSPI - Café
+                    </Title>
                     <Button
                         type="primary"
                         onClick={showDrawer}
                         style={{
                             backgroundColor: "#8b8b8b",
                             display: "flex",
-                            alignItems: "center",
                             border: "none",
                         }}
                     >
@@ -71,14 +75,14 @@ function AppHeader() {
                             >
                                 Dashboard
                             </Link>
-                            <Button
+                            {/* <Button
                                 type="primary"
                                 shape="round"
                                 className="bt-login"
                                 onClick={handleLogin}
                             >
                                 Login
-                            </Button>
+                            </Button> */}
                         </div>
                     </Drawer>
                 </div>

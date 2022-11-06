@@ -2,10 +2,9 @@ import React from 'react'
 import MauaLogo from "../../../images/selo-60-anos-maua.svg"
 import MitsubishiLogo from "../../../images/mitsubishi-changes-for-the-better.svg"
 import EliabelLogo from "../../../images/ebarreto-logo.png"
-import { Button, Checkbox, Form, Input, Radio } from "antd"
+import { Button, Form, Input, Radio, notification } from "antd"
 
-
-const plainOptions = ["Creme Brulê", "Cappuccino", "Café"]
+const plainText = ["Creme Brulê", "Cappuccino", "Café"]
 const options = [
     {
         label: "Creme Brulê",
@@ -25,10 +24,20 @@ function AppFazerPedido() {
   const formRef = React.createRef();
 
   const onFinish = (values) => {
-      console.log("Success:", values)
+    //TODO inserir a logica de inserir no banco de dados.
+
+    notification['success']({
+        message: 'Pedido Feito',
+        description: `Olá ${values.name}. Seu pedido de um ${plainText[values.option]} já foi realizado. Verifique no painel quanto estará pronto.`,
+        duration: 5
+    })
   }
   const onFinishFailed = (errorInfo) => {
-      console.log("Failed:", errorInfo)
+    notification['error']({
+        message: 'Erro no Pedido',
+        description: `Olá, seu pedido não foi realizado, verifique se os campos foram devidamente preenchidos, ou converse com nossa equipe.`,
+        duration: 5
+    })
   }
 
   const onReset = () => {
@@ -40,7 +49,7 @@ function AppFazerPedido() {
               <div className="logo">
                   <img src={MauaLogo} alt="logo Instituto Mauá de Tecnologia" />
                   <img src={MitsubishiLogo} alt="logo Mitsubishi Electric do Brasil" />
-                  {/* <img src={EliabelLogo} alt="logo Eliabel Barreto" /> */}
+                  <img src={EliabelLogo} alt="logo Eliabel Barreto" />
               </div>
               <Form
                   ref={formRef}
@@ -76,7 +85,7 @@ function AppFazerPedido() {
                       <Radio.Group options={options} optionType="button" />
                   </Form.Item>
 
-                  <Form.Item className="form-buttons">
+                  <Form.Item className="form-buttons" wrapperCol={{ span: 24 }}>
                       <Button className="bt-form" type="primary" htmlType="submit">
                           Fazer Pedido
                       </Button>
