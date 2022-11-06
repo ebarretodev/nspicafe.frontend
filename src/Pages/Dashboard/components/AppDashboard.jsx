@@ -47,80 +47,107 @@ function AppDashboard() {
                             </Text>
                         </Card2>
 
-                        <Card2 title={"Próximos Pedidos"} scroll width={"100%"} height={'550px'} flex={1}>
-                            <Text style={{ color: "black", marginTop: '10px' }}>
+                        <Card2
+                            title={"Próximos Pedidos"}
+                            scroll
+                            width={"100%"}
+                            height={"550px"}
+                            flex={1}
+                        >
+                            <Text style={{ color: "black", marginTop: "10px" }}>
                                 <b>Eliabel Barreto</b> (Cappuccino)
-                            </Text> <br />
-                            <Text style={{ color: "black", marginTop: '10px' }}>
+                            </Text>{" "}
+                            <br />
+                            <Text style={{ color: "black", marginTop: "10px" }}>
                                 <b>Eliabel Barreto</b> (Cappuccino)
-                            </Text> <br />
-                            <Text style={{ color: "black", marginTop: '10px' }}>
+                            </Text>{" "}
+                            <br />
+                            <Text style={{ color: "black", marginTop: "10px" }}>
                                 <b>Eliabel Barreto</b> (Cappuccino)
-                            </Text> <br />
-                            <Text style={{ color: "black", marginTop: '10px' }}>
+                            </Text>{" "}
+                            <br />
+                            <Text style={{ color: "black", marginTop: "10px" }}>
                                 <b>Eliabel Barreto</b> (Cappuccino)
-                            </Text> <br />
-                            <Text style={{ color: "black", marginTop: '10px' }}>
+                            </Text>{" "}
+                            <br />
+                            <Text style={{ color: "black", marginTop: "10px" }}>
                                 <b>Eliabel Barreto</b> (Cappuccino)
-                            </Text> <br />
-                            <Text style={{ color: "black", marginTop: '10px' }}>
+                            </Text>{" "}
+                            <br />
+                            <Text style={{ color: "black", marginTop: "10px" }}>
                                 <b>Eliabel Barreto</b> (Cappuccino)
-                            </Text> <br />
-                            <Text style={{ color: "black", marginTop: '10px' }}>
+                            </Text>{" "}
+                            <br />
+                            <Text style={{ color: "black", marginTop: "10px" }}>
                                 <b>Eliabel Barreto</b> (Cappuccino)
-                            </Text> <br />
-                            <Text style={{ color: "black", marginTop: '10px' }}>
+                            </Text>{" "}
+                            <br />
+                            <Text style={{ color: "black", marginTop: "10px" }}>
                                 <b>Eliabel Barreto</b> (Cappuccino)
-                            </Text> <br />
-                            <Text style={{ color: "black", marginTop: '10px' }}>
+                            </Text>{" "}
+                            <br />
+                            <Text style={{ color: "black", marginTop: "10px" }}>
                                 <b>Eliabel Barreto</b> (Cappuccino)
-                            </Text> <br />
-                            <Text style={{ color: "black", marginTop: '10px' }}>
+                            </Text>{" "}
+                            <br />
+                            <Text style={{ color: "black", marginTop: "10px" }}>
                                 <b>Eliabel Barreto</b> (Cappuccino)
-                            </Text> <br />
-                            <Text style={{ color: "black", marginTop: '10px' }}>
+                            </Text>{" "}
+                            <br />
+                            <Text style={{ color: "black", marginTop: "10px" }}>
                                 <b>Eliabel Barreto</b> (Cappuccino)
-                            </Text> <br />
-                            <Text style={{ color: "black", marginTop: '10px' }}>
+                            </Text>{" "}
+                            <br />
+                            <Text style={{ color: "black", marginTop: "10px" }}>
                                 <b>Eliabel Barreto</b> (Cappuccino)
-                            </Text> <br />
-                            <Text style={{ color: "black", marginTop: '10px' }}>
+                            </Text>{" "}
+                            <br />
+                            <Text style={{ color: "black", marginTop: "10px" }}>
                                 <b>Eliabel Barreto</b> (Cappuccino)
-                            </Text> <br />
-                            <Text style={{ color: "black", marginTop: '10px' }}>
+                            </Text>{" "}
+                            <br />
+                            <Text style={{ color: "black", marginTop: "10px" }}>
                                 <b>Eliabel Barreto</b> (Cappuccino)
-                            </Text> <br />
-                            <Text style={{ color: "black", marginTop: '10px' }}>
+                            </Text>{" "}
+                            <br />
+                            <Text style={{ color: "black", marginTop: "10px" }}>
                                 <b>Eliabel Barreto</b> (Cappuccino)
-                            </Text> <br />
-                            <Text style={{ color: "black", marginTop: '10px' }}>
+                            </Text>{" "}
+                            <br />
+                            <Text style={{ color: "black", marginTop: "10px" }}>
                                 <b>Eliabel Barreto</b> (Cappuccino)
-                            </Text> <br />
-                            <Text style={{ color: "black", marginTop: '10px' }}>
+                            </Text>{" "}
+                            <br />
+                            <Text style={{ color: "black", marginTop: "10px" }}>
                                 <b>Eliabel Barreto</b> (Cappuccino)
-                            </Text> <br />
-                            <Text style={{ color: "black", marginTop: '10px' }}>
+                            </Text>{" "}
+                            <br />
+                            <Text style={{ color: "black", marginTop: "10px" }}>
                                 <b>Eliabel Barreto</b> (Cappuccino)
-                            </Text> <br />
-                            <Text style={{ color: "black", marginTop: '10px' }}>
+                            </Text>{" "}
+                            <br />
+                            <Text style={{ color: "black", marginTop: "10px" }}>
                                 <b>Eliabel Barreto</b> (Cappuccino)
-                            </Text> <br />
-                            <Text style={{ color: "black", marginTop: '10px' }}>
+                            </Text>{" "}
+                            <br />
+                            <Text style={{ color: "black", marginTop: "10px" }}>
                                 <b>Eliabel Barreto</b> (Cappuccino)
-                            </Text> <br />
-                            <Text style={{ color: "black", marginTop: '10px' }}>
+                            </Text>{" "}
+                            <br />
+                            <Text style={{ color: "black", marginTop: "10px" }}>
                                 <b>Eliabel Barreto</b> (Cappuccino)
-                            </Text> <br />
+                            </Text>{" "}
+                            <br />
                         </Card2>
                     </div>
                     <div className="indicadores">
                         <div className="cards-indicadores">
                             <Card title={"Qtd Produzido Dia:"}>37</Card>
                             <Card title={"Qtd Pedidos Dia"}>37</Card>
-                            <Card title={"Qtd Produzido Dia:"}>37</Card>
+                            <Card title={"Tempo Médio Dia:"}>37</Card>
                             <Card title={"Qtd Produzido Hora:"}>37</Card>
                             <Card title={"Qtd Pedidos Hora"}>37</Card>
-                            <Card title={"Qtd Produzido Hora:"}>37</Card>
+                            <Card title={"Tempo Médio Hora:"}>37</Card>
                         </div>
                         <div className="grafico-indicadores">
                             <BarGraph />
