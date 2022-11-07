@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from "react"
 import HighchartsReact from "highcharts-react-official"
 import Highcharts from "highcharts"
-import { useMediaQuery } from './../../../helpers/useMediaQuery';
-
+import { useMediaQuery } from "./../../../helpers/useMediaQuery"
 
 Highcharts.setOptions({
     colors: [
@@ -35,9 +34,9 @@ Highcharts.setOptions({
 
 const labels = ["Creme Brulée", "Cappuccino", "Café"]
 
-
-function BarGraph() {
-      const chartComponent = useRef(null)
+function BarGraph(props) {
+    const { pedidos } = props
+    const chartComponent = useRef(null)
     const isMobileScreen = useMediaQuery("(max-width: 767px)")
     const isBigScreen = useMediaQuery("(min-width: 1400px)")
     const [chartOptions, setChartOptions] = useState({
@@ -76,20 +75,45 @@ function BarGraph() {
         series: [
             {
                 data: [
-                    { name: "Creme Brulée", y: 30, color: Highcharts.getOptions().colors[0] },
-                    { name: "Cappuccino", y: 20, color: Highcharts.getOptions().colors[1] },
-                    { name: "Café", y: 10, color: Highcharts.getOptions().colors[2] },
+                    {
+                        name: "Creme Brulée",
+                        y: pedidos.cremeBrulee,
+                        color: Highcharts.getOptions().colors[0],
+                    },
+                    {
+                        name: "Cappuccino",
+                        y: pedidos.cappuccino,
+                        color: Highcharts.getOptions().colors[1],
+                    },
+                    { name: "Café", y: pedidos.cafe, color: Highcharts.getOptions().colors[2] },
                 ],
             },
         ],
     })
 
-    useEffect(()=>{
-        chartComponent.current.chart.setSize(null)
-    }, [])
+    useEffect(() => {
+        setChartOptions({
+            series: [
+            {
+                data: [
+                    {
+                        name: "Creme Brulée",
+                        y: pedidos.cremeBrulee,
+                        color: Highcharts.getOptions().colors[0],
+                    },
+                    {
+                        name: "Cappuccino",
+                        y: pedidos.cappuccino,
+                        color: Highcharts.getOptions().colors[1],
+                    },
+                    { name: "Café", y: pedidos.cafe, color: Highcharts.getOptions().colors[2] },
+                ]
+            }]
+        })
+    }, [pedidos])
 
     return (
-        <div style={{ width: isBigScreen ? 1400 : (isMobileScreen ? 350 : 800) }}>
+        <div style={{ width: isBigScreen ? 1400 : isMobileScreen ? 350 : 800 }}>
             <HighchartsReact ref={chartComponent} highcharts={Highcharts} options={chartOptions} />
         </div>
     )

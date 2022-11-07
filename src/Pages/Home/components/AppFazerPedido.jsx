@@ -34,7 +34,7 @@ function AppFazerPedido() {
                 nome: values.name,
                 sobrenome: values.sobrenome,
                 tipoCafe: values.tipoCafe,
-                date: firebase.firestore.Timestamp.fromDate(new Date()),
+                dataPedido: firebase.firestore.Timestamp.fromDate(new Date()),
             })
             .then((docRef) => {
                 notification["success"]({
