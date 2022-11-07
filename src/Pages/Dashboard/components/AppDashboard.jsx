@@ -8,7 +8,7 @@ import Card2 from "./Card2"
 import BarGraph from "./BarGraph"
 import { useMediaQuery } from "./../../../helpers/useMediaQuery"
 
-const { Title, Text } = Typography
+const { Text } = Typography
 
 const tiposDeCafe = ["Creme Brulée", "Cappuccino", "Café"]
 const statusDoRobo = ["Ocioso", "Produzindo"]

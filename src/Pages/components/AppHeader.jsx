@@ -1,13 +1,13 @@
 import React, { useState } from "react"
 import { Button, Drawer, Typography } from "antd"
-import { CgEnter, CgMenu, CgSmileNone } from "react-icons/cg"
-import { useNavigate, Link } from "react-router-dom"
+import {  CgMenu } from "react-icons/cg"
+import { Link } from "react-router-dom"
 
 const { Title } = Typography
 
 function AppHeader() {
     const [visible, setVisible] = useState(false)
-    const navigate = useNavigate()
+    
     const showDrawer = () => {
         setVisible(true)
     }
@@ -15,9 +15,7 @@ function AppHeader() {
         setVisible(false)
     }
 
-    const handleLogin = () => {
-        navigate("/admin")
-    }
+
 
     return (
         <div className="container-fluid">
@@ -59,7 +57,7 @@ function AppHeader() {
                         title="Menu"
                         placement="right"
                         onClose={onClose}
-                        visible={visible}
+                        open={visible}
                         width={200}
                     >
                         <div className="menu-drawer">
