@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react"
+import React, { useState, useEffect } from "react"
 import MauaLogo from "../../../images/selo-60-anos-maua.svg"
 import MitsubishiLogo from "../../../images/mitsubishi-changes-for-the-better.svg"
 import EliabelLogo from "../../../images/ebarreto-logo.png"
@@ -7,7 +7,7 @@ import Card from "./Card"
 import Card2 from "./Card2"
 import BarGraph from "./BarGraph"
 import { useMediaQuery } from "./../../../helpers/useMediaQuery"
-import { db } from './../../../helpers/firebase';
+import { db } from "./../../../helpers/firebase"
 import firebase from "firebase"
 
 const { Text } = Typography
@@ -32,21 +32,26 @@ function AppDashboard() {
 
     const [tempoMedio, setTempoMedio] = useState({
         hora: 0,
-        dia: 0
+        dia: 0,
     })
+
+    const [pedidosDesc, setPedidosDesc] = useState([{
+        nome: 'Eliabel',
+        sobrenome: 'Barreto',
+        tipoCafe: 0
+    }])
 
     const imgStyles = {
         height: isBigScreen ? "150px" : "80px",
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         const tempDate = new Date()
         const visitDate = new Date(
             tempDate.getUTCFullYear(),
             tempDate.getUTCMonth(),
             tempDate.getUTCDate()
         )
-        
         db.collection("pedidos")
             .where("dataPedido", ">=", firebase.firestore.Timestamp.fromDate(visitDate))
             .onSnapshot((querySnapshot) => {
@@ -57,6 +62,12 @@ function AppDashboard() {
                     totalDia: 0,
                     produzidosDia: 0,
                 }
+                let tempPedidosHora = {
+                    totalHora: 0,
+                    produzidosHora: 0,
+                }
+                let mediaDia = []
+                let mediaHora = []
                 querySnapshot.docs.map((l) => {
                     if (l.data().tipoCafe === 0) {
                         tempPedidosDia.cremeBrulee++
@@ -67,39 +78,61 @@ function AppDashboard() {
                     if (l.data().tipoCafe === 2) {
                         tempPedidosDia.cafe++
                     }
-                    tempPedidosDia.totalDia ++
-                    if(l.data().dataEntregue){
+                    tempPedidosDia.totalDia++
+                    if (l.data().dataEntregue) {
                         tempPedidosDia.produzidosDia++
+                        mediaDia.push(l.data().dataEntregue - l.data().dataPedido)
+                    }
+                    const tempDateNow = new Date()
+                    const oneHour = 1000 * 60 * 60
+                    const lastHour = new Date(tempDateNow.getTime() - oneHour)
 
+                    if (l.data().dataPedido >=  firebase.firestore.Timestamp.fromDate(lastHour)) {
+                        tempPedidosHora.totalHora++
+                        if (l.data().dataEntregue) {
+                            tempPedidosHora.produzidosHora++
+                            mediaHora.push(l.data().dataEntregue - l.data().dataPedido)
+                            
+                        }
                     }
                     return true
                 })
                 setPedidosDia(tempPedidosDia)
-                
+                setPedidosHora(tempPedidosHora)
+                let mediaDiaSoma = 0
+                let mediaHoraSoma = 0 
+                mediaDia.map(l=>mediaDiaSoma+=l)
+                mediaHora.map(l=>mediaHoraSoma+=l)
+                let tempMediaDia = mediaDiaSoma / mediaDia.length
+                let tempMediaHora = mediaHoraSoma / mediaHora.length
+                if ( isNaN(tempMediaDia)) {
+                    tempMediaDia = 0
+                }
+                if (isNaN(tempMediaHora)) {
+                    tempMediaHora = 0
+                }
+                setTempoMedio({
+                    dia: tempMediaDia.toFixed(0),
+                    hora: tempMediaHora.toFixed(0),
+                })
             })
     }, [])
 
     useEffect(()=>{
         const tempDate = new Date()
-        const oneHour = 1000 * 60 * 60
-        const lastHour = new Date(tempDate.getTime() - oneHour)
+        const visitDate = new Date(
+            tempDate.getUTCFullYear(),
+            tempDate.getUTCMonth(),
+            tempDate.getUTCDate()
+        )
         db.collection("pedidos")
-            .where("dataPedido", ">=", firebase.firestore.Timestamp.fromDate(lastHour))
+            .where("dataPedido", ">=", firebase.firestore.Timestamp.fromDate(visitDate))
+            .where("dataEntregue", "==", false )
+            .orderBy("dataPedido" )
             .onSnapshot((querySnapshot) => {
-                let tempPedidosHora = {
-                    totalHora: 0,
-                    produzidosHora: 0,
-                }
-                querySnapshot.docs.map((l) => {
-                    tempPedidosHora.totalHora++
-                    if (l.data().dataEntregue) {
-                        tempPedidosHora.produzidosHora++
-                    }
-                    return true
-                })
-                setPedidosHora(tempPedidosHora)
+                console.log(querySnapshot) 
             })
-    }, [])
+    },[])
 
     return (
         <div className="content">
@@ -135,10 +168,11 @@ function AppDashboard() {
                             height={"550px"}
                             flex={1}
                         >
-                            <Text style={{ color: "black", marginTop: "10px" }}>
-                                <b>Eliabel Barreto</b> (Cappuccino)
-                            </Text>{" "}
-                            <br />
+                             <Text style={{ color: "black", marginTop: "10px" }}>
+                                    <b>Eliabel Barreto</b> (Cappuccino)
+                                </Text>
+                                <br />
+                            
                         </Card2>
                     </div>
                     <div className="indicadores">
@@ -155,14 +189,6 @@ function AppDashboard() {
                         </div>
                     </div>
                 </div>
-                {/*
-              
-              Status do Robô
-              Pedido Atual 
-              Cliente Atual: Nome e Sobrenome
-
-              Proximos Pedidos: 
-              Lista */}
             </div>
         </div>
     )
